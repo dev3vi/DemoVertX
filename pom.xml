@@ -76,6 +76,12 @@
       <version>${junit-jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-mongo-client</artifactId>
+      <version>4.3.0</version>
+    </dependency>
   </dependencies>
 
   <build>
