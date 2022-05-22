@@ -3,6 +3,7 @@ package com.example.starter.verticle;
 import com.example.starter.Service.CreateNewCustomer;
 //import com.example.starter.Service.GetAllEmployees;
 //import com.example.starter.Service.GetAllEmployeesSort;
+import com.example.starter.database.ConnectDb;
 import com.example.starter.model.Customer;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
@@ -26,6 +27,7 @@ public class CustomerVerticle extends AbstractVerticle {
 //    router.get("/api/employees-sort").handler(new GetAllEmployeesSort());
     router.route("/api/employees*").handler(BodyHandler.create());
     router.post("/api/employees").handler(new CreateNewCustomer());
+    router.get("/api/connect").handler(new ConnectDb());
     //tạo 1 máy chủ http kèm với 1 request xử lý
     vertx
       .createHttpServer()

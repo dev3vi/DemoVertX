@@ -2,6 +2,7 @@ package com.example.starter.Service;
 
 import com.example.starter.model.Customer;
 import io.vertx.core.Handler;
+import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.Json;
 import io.vertx.ext.web.RoutingContext;
@@ -14,6 +15,8 @@ public class CreateNewCustomer implements Handler<RoutingContext> {
   @Override
   public void handle(RoutingContext routingContext) {
     HttpServerResponse response = routingContext.response();
+    HttpServerRequest request = routingContext.request();
+
     response.putHeader("content-type", "application/json;charset=UTF-8");
     try {
       Customer customer = Json.decodeValue(routingContext.getBody(),Customer.class);
