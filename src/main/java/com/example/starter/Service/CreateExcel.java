@@ -21,17 +21,12 @@ public class CreateExcel implements Handler<RoutingContext> {
     a.add("ad");
     List<List<String>> data  = new ArrayList<>();
     data.add(a);
+
     try {
-      FileInputStream inputStream = new FileInputStream("C:\\Users\\BVCN 88\\Downloads\\test.xlsx");
-    } catch (FileNotFoundException e) {
+      FileExcelUtils.saveFile("C:\\Users\\BVCN 88\\Downloads\\test.xlsx","Sheet1","testExcel",1,data);
+    } catch (IOException e) {
       e.printStackTrace();
     }
-//    try {
-////      FileExcelUtils.saveFile("C:\\Users\\BVCN 88\\Downloads\\test.xlsx","Sheet1","testExcel",1,data);
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
-
     response.end("ok");
   }
 }
