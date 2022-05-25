@@ -89,7 +89,7 @@ public class FileExcelUtils {
 
         // .xlsx is the format for Excel Sheets...
         // writing the workbook into the file...
-        FileOutputStream out = new FileOutputStream(
+    OutputStream out = new FileOutputStream(
           new File("C:\\Users\\BVCN 88\\Downloads\\test.xlsx"));
 
         workbook.write(out);
