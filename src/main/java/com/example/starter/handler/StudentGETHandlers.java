@@ -19,18 +19,18 @@ public class StudentGETHandlers implements Handler<RoutingContext> {
   public void handle(RoutingContext routingContext) {
     HttpServerResponse response = routingContext.response();
       BasicDBObject sqlQuery = new BasicDBObject();
-    sqlQuery.put("name","thaolv");
+    sqlQuery.put("_id",-1);
     DBCollection collection = MongoProvider.getDatabase().getCollection("student");
     DBCursor cursor;
     List<Map<String, Object>> data = new ArrayList<>();
-    cursor = collection.find(sqlQuery);
+    cursor = collection.find().sort(sqlQuery);
     while ((cursor.hasNext())){
       data.add((Map<String, Object>)cursor.next());
     }
 
     data.forEach(e->{
       ObjectId id = (ObjectId) e.get("_id");
-      System.out.println(id.getTimestamp());
+      System.out.println(id.getDate());
     });
     response.end(Json.encodePrettily(data));
   }
