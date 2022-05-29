@@ -70,11 +70,19 @@
       <version>${junit-jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>ru.sbtqa.tag.datajack.providers</groupId>-->
+<!--      <artifactId>mongo-provider</artifactId>-->
+<!--      <version>5.1.2</version>-->
+<!--    </dependency>-->
+
+    <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
     <dependency>
-      <groupId>ru.sbtqa.tag.datajack.providers</groupId>
-      <artifactId>mongo-provider</artifactId>
-      <version>5.1.2</version>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongo-java-driver</artifactId>
+      <version>3.12.11</version>
     </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>

@@ -1,21 +1,24 @@
-package com.example.starter.Handler;
+package com.example.starter.handler;
 
-import com.example.starter.database.ConnectDb;
 import com.example.starter.database.MongoProvider;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import io.vertx.core.Handler;
+import io.vertx.core.http.HttpServerResponse;
+import io.vertx.core.json.Json;
 import io.vertx.ext.web.RoutingContext;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class StudentHandlers implements Handler<RoutingContext> {
+public class StudentGETHandlers implements Handler<RoutingContext> {
   @Override
   public void handle(RoutingContext routingContext) {
-    BasicDBObject sqlQuery = new BasicDBObject();
+    HttpServerResponse response = routingContext.response();
+      BasicDBObject sqlQuery = new BasicDBObject();
     sqlQuery.put("name","thaolv");
     DBCollection collection = MongoProvider.getDatabase().getCollection("student");
     DBCursor cursor;
@@ -24,6 +27,11 @@ public class StudentHandlers implements Handler<RoutingContext> {
     while ((cursor.hasNext())){
       data.add((Map<String, Object>)cursor.next());
     }
-    System.out.println(data);
+
+    data.forEach(e->{
+      ObjectId id = (ObjectId) e.get("_id");
+      System.out.println(id.getTimestamp());
+    });
+    response.end(Json.encodePrettily(data));
   }
 }

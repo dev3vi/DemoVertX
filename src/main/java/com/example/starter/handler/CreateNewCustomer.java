@@ -1,4 +1,4 @@
-package com.example.starter.Service;
+package com.example.starter.handler;
 
 import com.example.starter.model.Customer;
 import io.vertx.core.Handler;
