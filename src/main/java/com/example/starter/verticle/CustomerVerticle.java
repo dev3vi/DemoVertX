@@ -1,5 +1,8 @@
 package com.example.starter.verticle;
 
+//import com.example.starter.Handler.ReportTVVAssignGETHandlers;
+//import com.example.starter.Handler.ReportTVVDailyGETHandlers;
+import com.example.starter.Handler.StudentHandlers;
 import com.example.starter.Service.CreateExcel;
 import com.example.starter.Service.CreateNewCustomer;
 //import com.example.starter.Service.GetAllEmployees;
@@ -30,8 +33,10 @@ public class CustomerVerticle extends AbstractVerticle {
 //    router.get("/api/employees-sort").handler(new GetAllEmployeesSort());
     router.route("/api/employees*").handler(BodyHandler.create());
     router.post("/api/employees").handler(new CreateNewCustomer());
-    router.get("/api/connect").handler(new ConnectDb());
+    router.get("/api/connect").handler(new StudentHandlers());
     router.get("/api/excel").handler(new CreateExcel());
+//    router.get("/api/report-ttv-assign-handler").handler(new ReportTVVAssignGETHandlers());
+//    router.get("/api/report-ttv-daily-handler").handler(new ReportTVVDailyGETHandlers());
     //tạo 1 máy chủ http kèm với 1 request xử lý
     vertx
       .createHttpServer()
